@@ -34,7 +34,7 @@ for filename in files:
 
     #get finish_time
     finish_time = time.time()
-    print("Time for " + filename + " = %s seconds" % (start_time - finish_time) + "\n")
-    print("Processing speed for " + filename + " = %s line/seconds" % (line_count/(start_time - finish_time)) + "\n")
+    print("Time for " + filename + " = %s seconds" % (finish_time - start_time))
+    print("Processing speed for " + filename + " = %s line/seconds" % (line_count/(finish_time - start_time)))
 
     name_prefix = name_prefix + 1
