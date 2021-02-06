@@ -1,0 +1,30 @@
+PRE_PROCESSING:
+  - unique
+PROCESSING:
+  - line_strip
+  - clean_html:
+      or_condition: False
+  - detect_language:
+      language_code: ru
+      delimiter: '~'
+      delimited_position: -1
+      model_path: '/tmp/fasttext-lid.176.bin'
+  - remove_accents
+  - filter_stop_words:
+      language_code: ru
+      mode: replace
+  - normalize_hyphenated_words
+  - normalize_quotation_marks
+  - remove_profanity:
+      threshold: 0.9
+  - clean_symbols
+  - normalize_whitespace
+  - add_prefix:
+      text: '<|startoftext|>'
+  - add_postfix:
+      text: '<|endoftext|>'
+POST_PROCESSING:
+  - unique
+  - shuffle
+
+CACHE_DIR: '/tmp/tdc'
